@@ -8,7 +8,12 @@ services:
         environment:
           - VNC_PASSWORD= vncpass
         volumes:
-          - vncdata:/dev/shm
+          - type: volume
+            source: vncdata
+            target: /dev/shm
+          - type: bind
+            source: /root
+            target: /mnt
 
 volumes:
     vncdata:
