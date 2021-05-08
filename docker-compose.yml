@@ -4,9 +4,11 @@ services:
         image: dorowu/ubuntu-desktop-lxde-vnc
         ports:
           - 80:80
+          - 443:443
           - 5090:5090
         environment:
           - VNC_PASSWORD= vncpass
+          - SSL_PORT=443
         volumes:
           - type: volume
             source: vncdata
@@ -14,6 +16,9 @@ services:
           - type: bind
             source: /root
             target: /mnt
+          - type: bind
+            source: /root/ssl
+            target: /etc/nginx/ssl
 
 volumes:
     vncdata:
