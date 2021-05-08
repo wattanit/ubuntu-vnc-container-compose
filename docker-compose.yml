@@ -1,0 +1,14 @@
+version: "3.3"
+services:
+    vncserver:
+        image: dorowu/ubuntu-desktop-lxde-vnc
+        ports:
+          - 80:80
+          - 5090:5090
+        environment:
+          - VNC_PASSWORD= vncpass
+        volumes:
+          - vncdata:/dev/shm
+
+volumes:
+    vncdata:
